@@ -1,13 +1,9 @@
-package ui; // En del af ui
+package view; // En del af ui
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -81,16 +77,6 @@ public class LoginPanel extends JPanel // LoginPanel klasse der extender JPanel
 		btnLogin = new JButton("Login"); // Lav knap og sæt tekst
 		btnLogin.setBounds(118, 446, 89, 23); // Størrelse og placering
 		add(btnLogin); // Tilføj til panel
-
-		try // Forsøg at hente billede
-		{
-			BufferedImage img = ImageIO.read(this.getClass().getResource("/images/Main.png")); // henter billede fra pakken images
-			lblBackground = new JLabel(""); // laver label uden tekst
-			lblBackground.setIcon(new ImageIcon(img)); // sætter label icon til det hentede billede
-			lblBackground.setBounds(0, 0, 320, 480); // sætter størrelse på baggrund
-			add(lblBackground); // tilføjer til panel
-		} // try slutter
-		catch(IOException ex){}
 	} // Konstruktør slutter
 
 	/**

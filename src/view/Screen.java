@@ -1,4 +1,4 @@
-package ui; // en del af ui
+package view; // en del af ui
 
 // importerer de nødvendige pakker fra swing og cardlayout
 import java.awt.CardLayout;
