@@ -34,8 +34,8 @@ public class LoginPanel extends JPanel // LoginPanel klasse der extender JPanel
 		setLayout(null); // absolut layout
 
 		// JLabels
-		lblNewLabel = new JLabel("Welcome to Bitcoin@CBS"); // Opret label og sæt tekst
-		lblNewLabel.setBounds(60, 98, 194, 24); // Størrelse og placering
+		lblNewLabel = new JLabel("Welcome to Calendar"); // Opret label og sæt tekst
+		lblNewLabel.setBounds(78, 98, 164, 24); // Størrelse og placering
 		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 19)); // Tekst formattering
 		add(lblNewLabel); // Tilføj til panel
 

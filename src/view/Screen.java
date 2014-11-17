@@ -13,29 +13,22 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 	private static final long serialVersionUID = 1L; // id for screen
 	
 	//final static strenge til at kalde de korresponderende paneler
-	public static final String ADMINADD = "1";
-	public static final String ADMINEDIT = "2";
-	public static final String ADMINPANEL = "3";
-	public static final String LOGINPANEL = "4";
-	public static final String USERDEPOSIT = "5";
-	public static final String USERPANEL = "6";
-	public static final String USERPAY = "7";
-	public static final String USERTRANSFER = "8";
-	public static final String USERWITHDRAW = "9";
-	public static final String RECIPIENTPANEL = "10";
-
+	public static final String LOGINPANEL = "1";
+	public static final String MAINMENU = "2";
+	public static final String WEATHER = "3";
+	public static final String CALENDARMONTH = "4";
+	public static final String CALENDARWEEK = "5";
+	public static final String CALENDARDAY = "6";
+	
+	
 	// variable til at holde på objekter af JPanel
 	private JPanel contentPane;
-	private AdminAdd adminAdd;
-	private AdminEdit adminEdit;
-	private AdminPanel adminPanel;
 	private LoginPanel loginPanel;
-	private UserDeposit userDeposit;
-	private UserPanel userPanel;
-	private UserPay userPay;
-	private UserTransfer userTransfer;
-	private UserWithdraw userWithdraw;
-	private RecipientPanel recipientPanel;
+	private MainMenu mainMenu;
+	private Weather weather;
+	private CalendarMonth calendarMonth;
+	private CalendarWeek calendarWeek;
+	private CalendarDay calendarDay;
 	
 	CardLayout c; //variabel til at holde på cardlayout
 
@@ -54,35 +47,25 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 
 		// Der laves objekter af alle paneler og disse tilføjes contentpane, sammen med et kaldenavn
 		
-		adminAdd = new AdminAdd();
-		contentPane.add(adminAdd, ADMINADD);
-
-		adminEdit = new AdminEdit();
-		contentPane.add(adminEdit, ADMINEDIT);
-
-		adminPanel = new AdminPanel();
-		contentPane.add(adminPanel, ADMINPANEL);
 
 		loginPanel = new LoginPanel();
 		contentPane.add(loginPanel, LOGINPANEL);
 
-		userDeposit = new UserDeposit();
-		contentPane.add(userDeposit, USERDEPOSIT);
+		mainMenu = new MainMenu();
+		contentPane.add(mainMenu, MAINMENU);
 
-		userPanel = new UserPanel();
-		contentPane.add(userPanel, USERPANEL);
+		weather = new Weather();
+		contentPane.add(weather, WEATHER);
+		
+		calendarMonth = new CalendarMonth();
+		contentPane.add(calendarMonth, CALENDARMONTH);
 
-		userPay = new UserPay();
-		contentPane.add(userPay, USERPAY);
+		calendarWeek = new CalendarWeek();
+		contentPane.add(calendarWeek, CALENDARWEEK);
 
-		userTransfer = new UserTransfer();
-		contentPane.add(userTransfer, USERTRANSFER);
+		calendarDay = new CalendarDay ();
+		contentPane.add(calendarDay, CALENDARDAY);
 
-		userWithdraw = new UserWithdraw();
-		contentPane.add(userWithdraw, USERWITHDRAW);
-
-		recipientPanel = new RecipientPanel();
-		contentPane.add(recipientPanel, RECIPIENTPANEL);
 
 		c = (CardLayout) getContentPane().getLayout(); // cardlayoutet sættes til kunne bestå af de forskellige contentpanes
 	} // konstruktør slutter
@@ -91,75 +74,45 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 	// getters og setters til paneler
 	
 	/**
-	 * @return adminAdd
-	 */
-	public AdminAdd getAdminAdd() {
-		return adminAdd; // returnerer adiminAdd
-	}
-
-	/**
-	 * @return adminEdit
-	 */
-	public AdminEdit getAdminEdit() {
-		return adminEdit; // returnerer adminEdit
-	}
-
-	/**
-	 * @return adminPanel
-	 */
-	public AdminPanel getAdminPanel() {
-		return adminPanel; // returnerer adminPanel
-	}
-
-	/**
 	 * @return loginPanel
 	 */
 	public LoginPanel getLoginPanel() {
-		return loginPanel; // returnerer loginPanel
+		return loginPanel; // returnerer adminEdit
 	}
 
 	/**
-	 * @return userDeposit
+	 * @return mainMenu
 	 */
-	public UserDeposit getUserDeposit() {
-		return userDeposit; // returnerer userDeposit
+	public MainMenu getMainMenu() {
+		return mainMenu; // returnerer adminPanel
 	}
 
 	/**
-	 * @return userPanel
+	 * @return weather
 	 */
-	public UserPanel getUserPanel() {
-		return userPanel; // returnerer userPanel
+	public Weather getWeather() {
+		return weather; // returnerer weather
+	}
+	
+	/**
+	 * @return weather
+	 */
+	public CalendarMonth getCalendarMonth() {
+		return calendarMonth; // returnerer calendarMonth
+	}
+	/**
+	 * @return calendarWeek
+	 */
+	public CalendarWeek getCalendarWeek() {
+		return calendarWeek; // returnerer calendarWeek
 	}
 
 	/**
-	 * @return userPay
+	 * @return calendarDay
 	 */
-	public UserPay getUserPay() {
-		return userPay; // returnerer userPay
+	public CalendarDay getCalendarDay() {
+		return calendarDay; // returnerer calendarDay
 	}
-
-	/**
-	 * @return userTransfer
-	 */
-	public UserTransfer getUserTransfer() {
-		return userTransfer; // returnerer userTransfer
-	}
-
-	/**
-	 * @return userWithdraw
-	 */
-	public UserWithdraw getUserWithdraw() {
-		return userWithdraw; // returnerer userWithdraw
-	}
-
-	/**
-	 * @return recipientPanel
-	 */
-	public RecipientPanel getRecipientPanel() {
-		return recipientPanel; // returnerer recipientPanel
-	}
-
 	/**
 	 * @param card
 	 */
