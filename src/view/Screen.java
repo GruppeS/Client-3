@@ -26,9 +26,9 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 	private LoginPanel loginPanel;
 	private MainMenu mainMenu;
 	private Weather weather;
-	private CalendarMonth calendarMonth;
-	private CalendarWeek calendarWeek;
-	private CalendarDay calendarDay;
+//	private CalendarMonth calendarMonth;
+//	private CalendarWeek calendarWeek;
+//	private CalendarDay calendarDay;
 	
 	CardLayout c; //variabel til at holde på cardlayout
 
@@ -37,7 +37,7 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 	 */
 	public Screen() // konstruktør
 	{
-		setTitle("Bitcoin@CBS"); // titel på vindue
+		setTitle("Calendar"); // titel på vindue
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Programmet lukkes ned når vinduet lukkes
 		setBounds(100, 100, 336, 519); // størrelsen på vinduet
 		contentPane = new JPanel(); // der oprettes et tomt panel
@@ -52,19 +52,19 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 		contentPane.add(loginPanel, LOGINPANEL);
 
 		mainMenu = new MainMenu();
-		contentPane.add(mainMenu, MAINMENU);
+		contentPane.add(mainMenu, MAINMENU); 
 
 		weather = new Weather();
-		contentPane.add(weather, WEATHER);
+		contentPane.add(weather, WEATHER); 
 		
-		calendarMonth = new CalendarMonth();
-		contentPane.add(calendarMonth, CALENDARMONTH);
+//		calendarMonth = new CalendarMonth();
+//		contentPane.add(calendarMonth, CALENDARMONTH); 
 
-		calendarWeek = new CalendarWeek();
-		contentPane.add(calendarWeek, CALENDARWEEK);
+//		calendarWeek = new CalendarWeek();
+//		contentPane.add(calendarWeek, CALENDARWEEK); 
 
-		calendarDay = new CalendarDay ();
-		contentPane.add(calendarDay, CALENDARDAY);
+//		calendarDay = new CalendarDay ();
+//		contentPane.add(calendarDay, CALENDARDAY); 
 
 
 		c = (CardLayout) getContentPane().getLayout(); // cardlayoutet sættes til kunne bestå af de forskellige contentpanes
@@ -97,22 +97,22 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 	/**
 	 * @return weather
 	 */
-	public CalendarMonth getCalendarMonth() {
-		return calendarMonth; // returnerer calendarMonth
-	}
+//	public CalendarMonth getCalendarMonth() {
+//		return calendarMonth; // returnerer calendarMonth
+//	}
 	/**
 	 * @return calendarWeek
 	 */
-	public CalendarWeek getCalendarWeek() {
-		return calendarWeek; // returnerer calendarWeek
-	}
+//	public CalendarWeek getCalendarWeek() {
+//		return calendarWeek; // returnerer calendarWeek
+//	}
 
 	/**
 	 * @return calendarDay
 	 */
-	public CalendarDay getCalendarDay() {
-		return calendarDay; // returnerer calendarDay
-	}
+//	public CalendarDay getCalendarDay() {
+//		return calendarDay; // returnerer calendarDay
+//	}
 	/**
 	 * @param card
 	 */
