@@ -17,16 +17,16 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 	public static final String MAINMENU = "2";
 	public static final String WEATHER = "3";
 	public static final String CALENDARMONTH = "4";
-	public static final String CALENDARWEEK = "5";
-	public static final String CALENDARDAY = "6";
-	
+//	public static final String CALENDARWEEK = "5";
+//	public static final String CALENDARDAY = "6";
+//	
 	
 	// variable til at holde på objekter af JPanel
 	private JPanel contentPane;
 	private LoginPanel loginPanel;
 	private MainMenu mainMenu;
 	private Weather weather;
-//	private CalendarMonth calendarMonth;
+	private CalendarMonth calendarMonth;
 //	private CalendarWeek calendarWeek;
 //	private CalendarDay calendarDay;
 	
@@ -57,8 +57,8 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 		weather = new Weather();
 		contentPane.add(weather, WEATHER); 
 		
-//		calendarMonth = new CalendarMonth();
-//		contentPane.add(calendarMonth, CALENDARMONTH); 
+		calendarMonth = new CalendarMonth();
+		contentPane.add(calendarMonth, CALENDARMONTH); 
 
 //		calendarWeek = new CalendarWeek();
 //		contentPane.add(calendarWeek, CALENDARWEEK); 
@@ -94,12 +94,9 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 		return weather; // returnerer weather
 	}
 	
-	/**
-	 * @return weather
-	 */
-//	public CalendarMonth getCalendarMonth() {
-//		return calendarMonth; // returnerer calendarMonth
-//	}
+	public CalendarMonth getCalendarMonth() {
+		return calendarMonth; // returnerer calendarMonth
+	}
 	/**
 	 * @return calendarWeek
 	 */

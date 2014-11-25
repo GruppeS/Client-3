@@ -18,6 +18,7 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 	private JButton btnWeather;
 	private JLabel lblQuoteOfTheDay;
 	private JLabel lblTheQuote;
+	private JButton btnLogout;
 
 	public MainMenu()
 	{
@@ -44,6 +45,10 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 		lblTheQuote = new JLabel("");
 		lblTheQuote.setBounds(24, 285, 281, 99);
 		add(lblTheQuote);
+		
+		btnLogout = new JButton("Log out");
+		btnLogout.setBounds(123, 485, 89, 23);
+		add(btnLogout);
 
 	}
 
@@ -53,6 +58,8 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 		btnCalendars.setActionCommand("CalendarsBtn"); // tilføjer actioncommand
 		btnWeather.addActionListener(l);
 		btnWeather.setActionCommand("WeatherBtn");
+		btnLogout.addActionListener(l);
+		btnLogout.setActionCommand("LogutBtn");
 
 	} // metode slutter
 	
