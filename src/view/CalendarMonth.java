@@ -76,7 +76,7 @@ public class CalendarMonth extends JPanel  // CalendarMonth klasse der extender 
 	        
 	      
 	        lblMonth = new JLabel ("January");
-	        lblMonth.setBounds(160-lblMonth.getPreferredSize().width/2, 25, 100, 25);
+	        lblMonth.setBounds(136, 25, 62, 25);
 	        add(lblMonth);
 	        
 	        lblYear = new JLabel ("Change year:");
@@ -87,13 +87,9 @@ public class CalendarMonth extends JPanel  // CalendarMonth klasse der extender 
 	        cmbYear.setBounds(230, 305, 80, 20);
 	        add(cmbYear);
 	        
-	        btnPrev = new JButton ("&lt;&lt;");
-	        btnPrev.setBounds(10, 25, 50, 25);
+	        btnPrev = new JButton ("<<");
+	        btnPrev.setBounds(10, 25, 70, 25);
 	        add(btnPrev);
-	        
-	        btnNext = new JButton ("&gt;&gt;");
-	        btnNext.setBounds(260, 25, 50, 25);
-	        add(btnNext);
 	        
 	        mtblCalendar = new DefaultTableModel(){public boolean isCellEditable(int rowIndex, int mColIndex){return false;}};
 	        
@@ -106,6 +102,10 @@ public class CalendarMonth extends JPanel  // CalendarMonth klasse der extender 
 	        pnlCalendar = new JPanel(null);
 	        pnlCalendar.setBounds(0, 0, 320, 335);
 	        add(pnlCalendar);
+	        
+	        btnNext = new JButton (">>");
+	        btnNext.setBounds(240, 25, 70, 25);
+	        pnlCalendar.add(btnNext);
 	  
 	       
 	        
@@ -220,18 +220,24 @@ public class CalendarMonth extends JPanel  // CalendarMonth klasse der extender 
 	            setForeground(Color.black);
 	            return this;
 	        }
-	        public void addActionListener(ActionListener l) // metode til at tilføje actionlisteners og actioncommands til knapper
-	        {
-	        	btnPrev.addActionListener(l); // tilføjer actionlistener
-	    		btnPrev.setActionCommand("PrevBtn"); // tilføjer actioncommand
-	    		btnNext.addActionListener(l);
-	    		btnNext.setActionCommand("NextBtn");
-	    		cmbYear.addActionListener(l);
-	    		cmbYear.setActionCommand("YearCmb");
-	    		btnBackToMain.addActionListener(l);
-	    		btnBackToMain.setActionCommand("BackToMainBtn");
-	    		
-	    }
+	       
 	    
 	}
+	    public void addActionListener(ActionListener l) // metode til at tilføje actionlisteners og actioncommands til knapper
+        {
+        	btnPrev.addActionListener(l); // tilføjer actionlistener
+    		btnPrev.setActionCommand("PrevBtn"); // tilføjer actioncommand
+    		btnNext.addActionListener(l);
+    		btnNext.setActionCommand("NextBtn");
+    		cmbYear.addActionListener(l);
+    		cmbYear.setActionCommand("YearCmb");
+    		btnBackToMain.addActionListener(l);
+    		btnBackToMain.setActionCommand("BackToMainBtn");
+    		chckbxNewCheckBox.addActionListener(l);;
+    		chckbxNewCheckBox.setActionCommand("NewCheckBoxchkbx");
+    		chckbxNewCheckBox_1.addActionListener(l);
+    		chckbxNewCheckBox_1.setActionCommand("NewCheckBoxchckbx_1");
+    		chckbxNewCheckBox_2.addActionListener(l);
+    		chckbxNewCheckBox_2.setActionCommand("NewCheckBoxchckbx_2");
+    }
 }

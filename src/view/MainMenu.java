@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 {
@@ -17,7 +17,7 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 	private JButton btnCalendars;
 	private JButton btnWeather;
 	private JLabel lblQuoteOfTheDay;
-	private JLabel lblTheQuote;
+	private JTextArea txtAreaTheQuote;
 	private JButton btnLogout;
 
 	public MainMenu()
@@ -42,9 +42,11 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 		lblQuoteOfTheDay.setFont(new Font("Calibri", Font.PLAIN, 12));
 		add(lblQuoteOfTheDay);
 		
-		lblTheQuote = new JLabel("");
-		lblTheQuote.setBounds(24, 285, 281, 99);
-		add(lblTheQuote);
+		txtAreaTheQuote = new JTextArea();
+		txtAreaTheQuote.setBounds(24, 285, 281, 99);
+		txtAreaTheQuote.setLineWrap(true);
+		txtAreaTheQuote.setWrapStyleWord(true);
+		add(txtAreaTheQuote);
 		
 		btnLogout = new JButton("Log out");
 		btnLogout.setBounds(123, 485, 89, 23);
@@ -65,8 +67,8 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 	
 	// setters
 	
-	public void setQuote (String quote, String auther, String topic)
+	public void setQOTD (String quote)
 	{
-		lblTheQuote.setText(quote + ", Auther:" + auther + ", Topic:" + topic);
+		txtAreaTheQuote.setText(quote);
 	} // metode slutter
 } // klasse slutter

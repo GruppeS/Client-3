@@ -1,23 +1,23 @@
 package model;
 
-import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.PrintStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class TCPconnection {
 	
-	public String connection(String json) throws UnknownHostException, IOException{
+	public String connection(String json) throws IOException, ClassNotFoundException{
 
 		Socket clientSocket = new Socket("localhost", 8888);
 		
-		DataInputStream is = new DataInputStream(clientSocket.getInputStream());
-		PrintStream os = new PrintStream(clientSocket.getOutputStream());
+		ObjectInputStream is = new ObjectInputStream(clientSocket.getInputStream());
+		ObjectOutputStream os = new ObjectOutputStream(clientSocket.getOutputStream());
 		
-		os.println(json);
+		os.writeObject(json);
+		os.flush();
 		
-		String reply = is.readLine();
+		String reply = (String) is.readObject();
 		
 		return reply; 
 		
