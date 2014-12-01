@@ -81,6 +81,18 @@ public class Client { // Client klasse
 						e1.printStackTrace();
 					}
 				}
+				if (info.equals("1")){
+					screen.getLoginPanel().incorrect_1();
+				}
+				if (info.equals("2")){
+					screen.getLoginPanel().incorrect_2();
+				}
+				if (info.equals("3")){
+					screen.getLoginPanel().incorrect_3();
+				}
+				if (info.equals("4")){
+					screen.getLoginPanel().incorrect_4();
+				}
 			}
 		}
 	}

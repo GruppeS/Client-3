@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 {
@@ -26,7 +28,7 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 
 		lblMainMenu = new JLabel("Main Menu"); // Opret label og sæt tekst
 		lblMainMenu.setBounds(123, 47, 92, 51); // Størrelse og placering
-		lblMainMenu.setFont(new Font("Calibri", Font.PLAIN, 19)); // Tekst formattering
+		lblMainMenu.setFont(new Font("Calibri", Font.BOLD, 19)); // Tekst formattering
 		add(lblMainMenu); // Tilføj til panel
 
 		btnCalendars = new JButton("Calendar(s)");
@@ -43,7 +45,9 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 		add(lblQuoteOfTheDay);
 		
 		txtAreaTheQuote = new JTextArea();
-		txtAreaTheQuote.setBounds(24, 285, 281, 99);
+		txtAreaTheQuote.setFont(new Font("Papyrus", Font.ITALIC, 13));
+		txtAreaTheQuote.setBackground(SystemColor.menu);
+		txtAreaTheQuote.setBounds(24, 285, 281, 162);
 		txtAreaTheQuote.setLineWrap(true);
 		txtAreaTheQuote.setWrapStyleWord(true);
 		add(txtAreaTheQuote);
