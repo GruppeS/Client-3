@@ -47,13 +47,13 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 		txtAreaTheQuote = new JTextArea();
 		txtAreaTheQuote.setFont(new Font("Papyrus", Font.ITALIC, 13));
 		txtAreaTheQuote.setBackground(SystemColor.menu);
-		txtAreaTheQuote.setBounds(24, 285, 281, 162);
+		txtAreaTheQuote.setBounds(24, 285, 281, 156);
 		txtAreaTheQuote.setLineWrap(true);
 		txtAreaTheQuote.setWrapStyleWord(true);
 		add(txtAreaTheQuote);
 		
 		btnLogout = new JButton("Log out");
-		btnLogout.setBounds(123, 485, 89, 23);
+		btnLogout.setBounds(123, 446, 89, 23);
 		add(btnLogout);
 
 	}
@@ -65,7 +65,7 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 		btnWeather.addActionListener(l);
 		btnWeather.setActionCommand("WeatherBtn");
 		btnLogout.addActionListener(l);
-		btnLogout.setActionCommand("LogutBtn");
+		btnLogout.setActionCommand("LogoutBtn");
 
 	} // metode slutter
 	
@@ -75,4 +75,5 @@ public class MainMenu extends JPanel // MainMenu klasse der extender JPanel
 	{
 		txtAreaTheQuote.setText(quote);
 	} // metode slutter
+	
 } // klasse slutter

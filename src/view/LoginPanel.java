@@ -37,8 +37,8 @@ public class LoginPanel extends JPanel // LoginPanel klasse der extender JPanel
 
 		// JLabels
 		lblNewLabel = new JLabel("Welcome to Calendar"); // Opret label og sæt tekst
-		lblNewLabel.setBounds(78, 98, 164, 24); // Størrelse og placering
-		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 19)); // Tekst formattering
+		lblNewLabel.setBounds(74, 97, 170, 24); // Størrelse og placering
+		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 19)); // Tekst formattering
 		add(lblNewLabel); // Tilføj til panel
 
 		lblPleaseLoginBelow = new JLabel("Please login below:");
@@ -73,8 +73,8 @@ public class LoginPanel extends JPanel // LoginPanel klasse der extender JPanel
 		btnLogin.setBounds(118, 446, 89, 23); // Størrelse og placering
 		add(btnLogin); // Tilføj til panel
 		
-		lblIncorrect_1 = new JLabel("Email does not exist");
-		lblIncorrect_1.setBounds(109, 318, 98, 14);
+		lblIncorrect_1 = new JLabel("Username does not exist");
+		lblIncorrect_1.setBounds(99, 318, 124, 14);
 		lblIncorrect_1.setFont(new Font("Calibri", Font.ITALIC, 11));
 		lblIncorrect_1.setForeground(Color.red);
 		lblIncorrect_1.setVisible(false);
@@ -145,14 +145,19 @@ public class LoginPanel extends JPanel // LoginPanel klasse der extender JPanel
 	{
 		return password_Login.getText();
 	}
-	/**
-	 * Resets textfields
-	 */
+
 	public void reset() // metode der nulstiller panelet
 	{
 		// skjuler labels
 		lblIncorrect_1.setVisible(false);
+		lblIncorrect_2.setVisible(false);
+		lblIncorrect_3.setVisible(false);
+		lblIncorrect_4.setVisible(false);
 		// fjerner tekst i textfields
 		password_Login.setText("");
+	}
+	
+	public void setPassword_Login(String password_Login){
+		this.password_Login.setText(password_Login);
 	}
 }

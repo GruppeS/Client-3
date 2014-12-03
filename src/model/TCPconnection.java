@@ -4,15 +4,30 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class TCPconnection {
 	
-	public String connection(String json) throws IOException, ClassNotFoundException{
-
-		Socket clientSocket = new Socket("localhost", 8888);
-		
-		ObjectInputStream is = new ObjectInputStream(clientSocket.getInputStream());
-		ObjectOutputStream os = new ObjectOutputStream(clientSocket.getOutputStream());
+	ObjectInputStream is;
+	ObjectOutputStream os;
+	Socket clientSocket;
+	
+	public void connect() {
+		try {
+			clientSocket = new Socket("localhost", 8888);
+			is = new ObjectInputStream(clientSocket.getInputStream());
+			os = new ObjectOutputStream(clientSocket.getOutputStream());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public String connection(String json) throws IOException, ClassNotFoundException {
 		
 		os.writeObject(json);
 		os.flush();
@@ -22,8 +37,13 @@ public class TCPconnection {
 		return reply; 
 		
 	}
-
+	public void closeConnection(){
 	
-
-	
+		try {
+			clientSocket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
