@@ -1,4 +1,4 @@
-package logic; // ligger i logic-pakken
+ package logic; // ligger i logic-pakken
 
 // importerer skærmen, forbindelse og kryptering
 import java.awt.event.ActionEvent;
@@ -62,13 +62,15 @@ public class Client { // Client klasse
 			if(cmd.equals("LoginBtn")) {
 				String userName = screen.getLoginPanel().getUserName_Login();
 				String password = screen.getLoginPanel().getPassword_Login();
-				userInfo.setAuthUserEmail(userName);
-				userInfo.setAuthUserPassword(password);
+				userInfo.setUsername(userName);
+				userInfo.setPassword(password);
 				String json = gson.toJson(userInfo);
 				String info = null;
 				try {
 					tcpconnection.connect();
 					info = tcpconnection.connection(json);
+					userInfo = gson.fromJson(info,  UserInfo.class);
+					info = userInfo.getAuthenticated();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -129,25 +131,25 @@ public class Client { // Client klasse
 					
 					for(int i = 0; i<7; i++) {
 						if(i==0){
-							screen.getWeather().setDay1(forecasts.getForecasts().get(i).getDate().substring(0, 10), forecasts.getForecasts().get(i).getCelsius(), forecasts.getForecasts().get(i).getDesc());
+							screen.getWeather().setDay1(forecasts.forecasts.get(i).getDate().substring(0, 10), forecasts.forecasts.get(i).getCelsius(), forecasts.forecasts.get(i).getDesc());
 						}
 						if(i==1){
-							screen.getWeather().setDay2(forecasts.getForecasts().get(i).getDate().substring(0, 10), forecasts.getForecasts().get(i).getCelsius(), forecasts.getForecasts().get(i).getDesc());
+							screen.getWeather().setDay2(forecasts.forecasts.get(i).getDate().substring(0, 10), forecasts.forecasts.get(i).getCelsius(), forecasts.forecasts.get(i).getDesc());
 						}
 						if(i==2){
-							screen.getWeather().setDay3(forecasts.getForecasts().get(i).getDate().substring(0, 10), forecasts.getForecasts().get(i).getCelsius(), forecasts.getForecasts().get(i).getDesc());
+							screen.getWeather().setDay3(forecasts.forecasts.get(i).getDate().substring(0, 10), forecasts.forecasts.get(i).getCelsius(), forecasts.forecasts.get(i).getDesc());
 						}
 						if(i==3){
-							screen.getWeather().setDay4(forecasts.getForecasts().get(i).getDate().substring(0, 10), forecasts.getForecasts().get(i).getCelsius(), forecasts.getForecasts().get(i).getDesc());
+							screen.getWeather().setDay4(forecasts.forecasts.get(i).getDate().substring(0, 10), forecasts.forecasts.get(i).getCelsius(), forecasts.forecasts.get(i).getDesc());
 						}
 						if(i==4){
-							screen.getWeather().setDay5(forecasts.getForecasts().get(i).getDate().substring(0, 10), forecasts.getForecasts().get(i).getCelsius(), forecasts.getForecasts().get(i).getDesc());
+							screen.getWeather().setDay5(forecasts.forecasts.get(i).getDate().substring(0, 10), forecasts.forecasts.get(i).getCelsius(), forecasts.forecasts.get(i).getDesc());
 						}
 						if(i==5){
-							screen.getWeather().setDay6(forecasts.getForecasts().get(i).getDate().substring(0, 10), forecasts.getForecasts().get(i).getCelsius(), forecasts.getForecasts().get(i).getDesc());
+							screen.getWeather().setDay6(forecasts.forecasts.get(i).getDate().substring(0, 10), forecasts.forecasts.get(i).getCelsius(), forecasts.forecasts.get(i).getDesc());
 						}
 						if(i==6){
-							screen.getWeather().setDay7(forecasts.getForecasts().get(i).getDate().substring(0, 10), forecasts.getForecasts().get(i).getCelsius(), forecasts.getForecasts().get(i).getDesc());
+							screen.getWeather().setDay7(forecasts.forecasts.get(i).getDate().substring(0, 10), forecasts.forecasts.get(i).getCelsius(), forecasts.forecasts.get(i).getDesc());
 						}
 						
 					}
