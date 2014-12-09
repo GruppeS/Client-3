@@ -4,8 +4,9 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Vector;
 
-import model.Encrypter;
+import model.Events;
 import model.Forecast;
 import model.Forecasts;
 import model.QOTD;
@@ -21,12 +22,11 @@ public class Client { // Client klasse
 	// Instantsvariable 
 	private Screen screen;
 	private TCPconnection tcpconnection;
-	private Encrypter cryp;
 	private UserInfo userInfo;
 	private Gson gson;
 	private QOTD qotd;
-	private Forecast forecast;
 	private Forecasts forecasts;
+	private Events events;
 
 
 	public Client () { // Konstruktør
@@ -34,21 +34,18 @@ public class Client { // Client klasse
 		// instansvariable instansieres
 		screen = new Screen();
 		tcpconnection = new TCPconnection();
-		cryp = new Encrypter();
 		userInfo = new UserInfo();
 		gson = new GsonBuilder().create();
 		qotd = new QOTD();
-		forecast = new Forecast(null, null, null);
 		forecasts = new Forecasts();
+		events = new Events();
 
 
 		// actionlistener til hvert panel
 		screen.getLoginPanel().addActionListener(new LoginPanelActionListener());
 		screen.getMainMenu().addActionListener(new MainMenuActionListener()); 
 		screen.getWeather().addActionListener(new WeatherActionListener());
-		screen.getCalendarMonth().addActionListener(new CalendarMonthActionListener());
-		//		screen.getCalendarWeek().addActionListener(new CalendarWeekActionListener()); 
-		//		screen.getCalendarDay().addActionListener(new CalendarDayActionListener()); 
+		screen.getCalendarView().addActionListener(new CalendarViewActionListener());
 
 	} // konstruktør afsluttes
 	public void run()
@@ -114,7 +111,34 @@ public class Client { // Client klasse
 		public void actionPerformed(ActionEvent e) {
 			String cmd = e.getActionCommand();
 			if(cmd.equals("CalendarsBtn")) {
-				screen.show(Screen.CALENDARMONTH);
+				String gsonString = gson.toJson(events);
+				String calendar = null;
+				
+				try {
+					calendar = tcpconnection.connection(gsonString);
+					events = gson.fromJson(calendar,  Events.class);
+					Vector<Object> data = new Vector<Object>();
+					
+					for(int i = 0; i<events.events.size(); i++) {
+						
+						Vector<Object> row = new Vector<Object>();
+						row.addElement(events.events.get(i).getType());
+						row.addElement(events.events.get(i).getDescription());
+						row.addElement(events.events.get(i).getStartdate());
+						row.addElement(events.events.get(i).getEnddate());
+						row.addElement(events.events.get(i).getLocation());
+						data.addElement(row);
+					}
+					screen.getCalendarView().addTable(data);
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+				screen.setSize(900, 562);
+				screen.show(Screen.CALENDARVIEW);
 			}
 			if (cmd.equals("LogoutBtn")) {
 				tcpconnection.closeConnection();
@@ -175,65 +199,15 @@ public class Client { // Client klasse
 		}
 	}
 
-	private class CalendarMonthActionListener implements ActionListener {
+	private class CalendarViewActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String cmd = e.getActionCommand();
-
+			
 			if(cmd.equals("BackToMainBtn")) {
 				screen.show(Screen.MAINMENU);
-			}
-
-			int currentYear = screen.getCalendarMonth().getCurrentYear();
-			int currentMonth = screen.getCalendarMonth().getCurrentMonth();
-
-
-			if (cmd.equals("PrevBtn")){
-
-				if (currentMonth == 0){ //Back one year
-					screen.getCalendarMonth().setCurrentMonth(currentMonth = 11);
-					screen.getCalendarMonth().setCurrentYear(currentYear -= 1);
-
-				}
-				else{ //Back one month
-					screen.getCalendarMonth().setCurrentMonth(currentMonth -= 1);
-
-				}
-				screen.getCalendarMonth().refreshCalendar(currentMonth, currentYear);
-
-			}
-
-			if (cmd.equals("NextBtn")){
-
-				if (currentMonth == 11){ //Foward one year
-					screen.getCalendarMonth().setCurrentMonth(currentMonth = 0);
-					screen.getCalendarMonth().setCurrentYear(currentYear += 1);
-				}
-				else{ //Foward one month
-					screen.getCalendarMonth().setCurrentMonth(currentMonth += 1);
-				}
-				screen.getCalendarMonth().refreshCalendar(currentMonth, currentYear);
-
-
-				if(cmd.equals("YearCmb")){
-
-					if (screen.getCalendarMonth().getCmbYear().getSelectedItem() != null){
-						String b = screen.getCalendarMonth().getCmbYear().getSelectedItem().toString();
-						screen.getCalendarMonth().setCurrentYear(currentYear = Integer.parseInt(b));
-						screen.getCalendarMonth().refreshCalendar(currentMonth, currentYear);	
-					}
-				}
+				screen.setSize(336, 519);
 			}
 		}
 	}
-
-	//	private class CalendarWeekActionListener implements ActionListener {
-	//		public void actionPerformed(ActionEvent e) {
-	//			String cmd = e.getActionCommand();
-	//		}
-	//	}
-	//	private class CalendarDayActionListener implements ActionListener {
-	//		public void actionPerformed(ActionEvent e) {
-	//			String cmd = e.getActionCommand();
-	//		}
-	//	}
 }
+

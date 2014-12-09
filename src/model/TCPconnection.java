@@ -8,9 +8,11 @@ import java.net.UnknownHostException;
 
 public class TCPconnection {
 	
-	ObjectInputStream is;
-	ObjectOutputStream os;
-	Socket clientSocket;
+	private byte[] serverReply;
+	private ObjectInputStream is;
+	private ObjectOutputStream os;
+	private Socket clientSocket;
+	private Encryption encryption = new Encryption();
 	
 	public void connect() {
 		try {
@@ -29,11 +31,10 @@ public class TCPconnection {
 	
 	public String connection(String json) throws IOException, ClassNotFoundException {
 		
-		os.writeObject(json);
+		os.writeObject(encryption.encrypt(json));
 		os.flush();
-		
-		String reply = (String) is.readObject();
-		
+		serverReply = (byte[]) is.readObject();
+		String reply = encryption.decrypt(serverReply);
 		return reply; 
 		
 	}

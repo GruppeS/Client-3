@@ -16,20 +16,16 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 	public static final String LOGINPANEL = "1";
 	public static final String MAINMENU = "2";
 	public static final String WEATHER = "3";
-	public static final String CALENDARMONTH = "4";
-//	public static final String CALENDARWEEK = "5";
-//	public static final String CALENDARDAY = "6";
-//	
+	public static final String CALENDARVIEW = "4";
+
 	
 	// variable til at holde på objekter af JPanel
 	private JPanel contentPane;
 	private LoginPanel loginPanel;
 	private MainMenu mainMenu;
 	private Weather weather;
-	private CalendarMonth calendarMonth;
-//	private CalendarWeek calendarWeek;
-//	private CalendarDay calendarDay;
-	
+	private CalendarView calendarView;
+
 	CardLayout c; //variabel til at holde på cardlayout
 
 	/**
@@ -57,14 +53,8 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 		weather = new Weather();
 		contentPane.add(weather, WEATHER); 
 		
-		calendarMonth = new CalendarMonth();
-		contentPane.add(calendarMonth, CALENDARMONTH); 
-
-//		calendarWeek = new CalendarWeek();
-//		contentPane.add(calendarWeek, CALENDARWEEK); 
-
-//		calendarDay = new CalendarDay ();
-//		contentPane.add(calendarDay, CALENDARDAY); 
+		calendarView = new CalendarView();
+		contentPane.add(calendarView, CALENDARVIEW); 
 
 
 		c = (CardLayout) getContentPane().getLayout(); // cardlayoutet sættes til kunne bestå af de forskellige contentpanes
@@ -74,8 +64,14 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 	// getters og setters til paneler
 	
 	/**
+	 * @return 
 	 * @return loginPanel
 	 */
+	
+	public void setSize(int h, int w){
+		setBounds(0, 0, h, w);
+	}
+	
 	public LoginPanel getLoginPanel() {
 		return loginPanel; // returnerer adminEdit
 	}
@@ -94,25 +90,10 @@ public class Screen extends JFrame // Screen klasse der extender JFrame
 		return weather; // returnerer weather
 	}
 	
-	public CalendarMonth getCalendarMonth() {
-		return calendarMonth; // returnerer calendarMonth
+	public CalendarView getCalendarView() {
+		return calendarView; // returnerer calendarView
 	}
-	/**
-	 * @return calendarWeek
-	 */
-//	public CalendarWeek getCalendarWeek() {
-//		return calendarWeek; // returnerer calendarWeek
-//	}
 
-	/**
-	 * @return calendarDay
-	 */
-//	public CalendarDay getCalendarDay() {
-//		return calendarDay; // returnerer calendarDay
-//	}
-	/**
-	 * @param card
-	 */
 	public void show(String card) // metode til at skifte mellem de forskellige paneler gennem cardlayout
 	{
 		c.show(getContentPane(), card); // cardlayout viser den contentpane der bliver sendt gennem argumentet
